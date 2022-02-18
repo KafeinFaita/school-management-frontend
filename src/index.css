@@ -17,3 +17,9 @@
 body {
   font-size:18px;
 }
+.sidebar-title {
+  @apply text-2xl text-gray-100 p-4 select-none;
+}
+.sidebar-hover {
+  @apply flex items-center flex-row-reverse gap-2 text-lg w-10/12 transition duration-300 rounded-l-full p-2 hover:bg-blue-100 hover:bg-opacity-25 cursor-pointer;
+}

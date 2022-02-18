@@ -1,11 +1,11 @@
 import Datetime from "../components/Datetime"
 
-const Dashboard = () => {
+const Reports = () => {
   return (
     <div className="h-full px-10">
-      <Datetime title='Dashboard' />
+      <Datetime title='Reports' />
     </div>
   )
 }
 
-export default Dashboard
+export default Reports
