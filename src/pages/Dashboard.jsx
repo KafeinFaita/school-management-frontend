@@ -1,24 +1,26 @@
 import Datetime from "../components/Datetime"
 import { useState, useEffect } from 'react' 
-import {Navigate} from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import axios from 'axios'
 
 const Dashboard = () => {
 
   const [ isVerified, setIsVerified ] = useState(false)
+  const [ delayRender, setDelayRender ] = useState(<h1>Not logged in. Redirecting...</h1>)
+
+  useEffect(async () => {
+    try {
+      const data = await axios.get('dashboard')
+      setIsVerified(data.data.verified)
+    } catch (error) {
+      console.log(error)
+    }
+  }, [])
 
   useEffect(() => {
-     const ac = new AbortController();
-
-     axios.get('/dashboard')
-     .then((data) => {
-       console.log(data.data.verified)
-       setIsVerified(data.data.verified)
-     }).catch(err => console.log(err));
-
-  
-     return () => ac.abort;
-  }, [])
+    const timeout = setTimeout(() => setDelayRender(<Navigate to='/login'/>), 2000)
+    return () => clearTimeout(timeout)
+  },[])
   
 
   if (isVerified) {
@@ -28,9 +30,7 @@ const Dashboard = () => {
       </div>
     )
   }
-
-  return <Navigate to='/login' />
-  
+  return delayRender
 }
 
 export default Dashboard
