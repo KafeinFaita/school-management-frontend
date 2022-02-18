@@ -10,7 +10,7 @@ const Signup = () => {
     const navigate = useNavigate();
     const onSignup = (e) => {
         e.preventDefault();
-        axios.post('/student',{ username, password })
+        axios.post('/signup',{ username, password })
         .then((data) => {
             navigate(data.data.redirect);
         }).catch(err => console.log(err))
