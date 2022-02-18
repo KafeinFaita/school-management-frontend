@@ -8,6 +8,7 @@ import Login from './pages/auth/Login';
 import Dashboard from './pages/Dashboard';
 import NotFound from './pages/NotFound';
 import Reports from './pages/Reports';
+import ProtectedRoute from './routes/ProtectedRoute';
 
 
 function App() {
@@ -17,10 +18,12 @@ function App() {
       <Route path='/signup' element={ <Signup /> } />
       <Route path='/login' element={ <Login /> } />
 
-      <Route element={ <DashboardLayout /> }>
-        <Route path='/' element={ <Dashboard /> } />
+      <Route element={ <ProtectedRoute /> }>
+        <Route element={ <DashboardLayout /> }>
+          <Route path='/' element={ <Dashboard /> } />
 
-        <Route path='/reports' element={ <Reports /> } />
+          <Route path='/reports' element={ <Reports /> } />
+        </Route>
       </Route>
       
       <Route path="*" element={ <NotFound /> } />
