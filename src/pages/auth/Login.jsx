@@ -11,7 +11,7 @@ const Login = () => {
     const navigate = useNavigate();
 
     const onLogin= () => {
-        axios.post('/login')
+        axios.post('/login',{ username,password })
         .then((data) => {
             navigate(data.data.redirect);
         })
@@ -26,14 +26,14 @@ const Login = () => {
                     <label className="text-sm text-gray-800" htmlFor="username">Username:</label>
                     <div className="flex items-center gap-2">
                         <AiOutlineUser className="text-gray-400" />
-                        <input className="bg-transparent w-full border-b border-gray-500 outline-none p-2" type="text" required />
+                        <input onChange={(e) => setUsername(e.target.value)} value={username} className="bg-transparent w-full border-b border-gray-500 outline-none p-2" type="text" required />
                     </div>
                 </div>
                 <div className="flex flex-col mt-10">
                     <label className="text-sm text-gray-800" htmlFor="username">Password:</label>
                     <div className="flex gap-2 items-center">
                         <AiOutlineLock className="text-gray-400" />
-                        <input className="bg-transparent w-full border-b border-gray-500 outline-none p-2" type="password" required />
+                        <input onChange={(e) => setPassword(e.target.value)} value={password} className="bg-transparent w-full border-b border-gray-500 outline-none p-2" type="password" required />
                     </div>
                 </div>
                 <div className="flex flex-col gap-5 mt-5">
