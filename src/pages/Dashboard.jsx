@@ -1,5 +1,6 @@
 import Datetime from "../components/Datetime"
 import { useState, useEffect } from 'react' 
+import {Navigate} from 'react-router-dom';
 import axios from 'axios'
 
 const Dashboard = () => {
@@ -23,9 +24,7 @@ const Dashboard = () => {
     )
   }
 
-  return (
-    <h1>NOT LOGGED IN :(</h1>
-  )
+  return <Navigate to='/login' />
   
 }
 
