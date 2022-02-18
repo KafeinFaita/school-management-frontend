@@ -10,7 +10,8 @@ const Login = () => {
 
     const navigate = useNavigate();
 
-    const onLogin= () => {
+    const onLogin= (e) => {
+        e.preventDefault();
         axios.post('/login',{ username,password })
         .then((data) => {
             navigate(data.data.redirect);
