@@ -8,12 +8,17 @@ const Dashboard = () => {
   const [ isVerified, setIsVerified ] = useState(false)
 
   useEffect(() => {
-    axios.get('/dashboard')
-        .then((data) => {
-          console.log(data.data.verified)
-          setIsVerified(data.data.verified)
-        }).catch(err => console.log(err));
-  }, [isVerified])
+     const ac = new AbortController();
+
+     axios.get('/dashboard')
+     .then((data) => {
+       console.log(data.data.verified)
+       setIsVerified(data.data.verified)
+     }).catch(err => console.log(err));
+
+  
+     return () => ac.abort;
+  }, [])
   
 
   if (isVerified) {
