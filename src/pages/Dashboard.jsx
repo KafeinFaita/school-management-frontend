@@ -12,22 +12,22 @@ const Dashboard = () => {
     const fetchData = async () => {
       try {
         const data = await axios.get('dashboard')
+        console.log('done')
         setIsVerified(data.data.verified)
+        
       } catch (error) {
         console.log(error)
       }
     }
 
-    const checkVerified = async () => {
+    (async() => {
       await fetchData()
-
+      console.log('test')
       if (!isVerified) {
         const timeout = setTimeout(() => setDelayRender(<Navigate to='/login'/>), 2000)
-        return async () => clearTimeout(timeout)
+        return () => clearTimeout(timeout)
       }
-    }
-    checkVerified()
-    
+    })()
   }, [isVerified])  
 
   if (isVerified) {
