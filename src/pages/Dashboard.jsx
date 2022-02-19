@@ -6,22 +6,29 @@ import axios from 'axios'
 const Dashboard = () => {
 
   const [ isVerified, setIsVerified ] = useState(false)
-  const [ delayRender, setDelayRender ] = useState(<h1>Not logged in. Redirecting...</h1>)
-
-  useEffect(async () => {
-    try {
-      const data = await axios.get('dashboard')
-      setIsVerified(data.data.verified)
-    } catch (error) {
-      console.log(error)
-    }
-  }, [])
+  const [ delayRender, setDelayRender ] = useState(<h1>Verifying user...</h1>)
 
   useEffect(() => {
-    const timeout = setTimeout(() => setDelayRender(<Navigate to='/login'/>), 2000)
-    return () => clearTimeout(timeout)
-  },[])
-  
+    const fetchData = async () => {
+      try {
+        const data = await axios.get('dashboard')
+        setIsVerified(data.data.verified)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    const checkVerified = async () => {
+      await fetchData()
+
+      if (!isVerified) {
+        const timeout = setTimeout(() => setDelayRender(<Navigate to='/login'/>), 2000)
+        return async () => clearTimeout(timeout)
+      }
+    }
+    checkVerified()
+    
+  }, [isVerified])  
 
   if (isVerified) {
     return (
