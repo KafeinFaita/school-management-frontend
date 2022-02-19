@@ -7,6 +7,7 @@ const Login = () => {
 
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
+    const [role,setRole] = useState('');
 
     const navigate = useNavigate();
 
@@ -28,6 +29,11 @@ const Login = () => {
                     <div className="flex items-center gap-2">
                         <AiOutlineUser className="text-gray-400" />
                         <input onChange={(e) => setUsername(e.target.value)} value={username} className="bg-transparent w-full border-b border-gray-500 outline-none p-2" type="text" required />
+                        <select className="bg-transparent w-1/2 border-b border-gray-500 outline-none p-2" value={role} onChange={(e) => setRole(e.target.value)}>
+                            <option value="teacher">Teacher</option>
+                            <option value="student">Student</option>
+                            <option value="admin">Admin</option>
+                        </select>
                     </div>
                 </div>
                 <div className="flex flex-col mt-10">

@@ -9,6 +9,7 @@ import Dashboard from './pages/Dashboard';
 import NotFound from './pages/NotFound';
 import Reports from './pages/Reports';
 import ProtectedRoute from './routes/ProtectedRoute';
+import Profile from './pages/Profile';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path='/dashboard' element={ <Dashboard /> } />
 
         <Route path='/reports' element={ <Reports /> } />
+        <Route path='/profile' element={ <Profile /> } />
       </Route>
       
       
