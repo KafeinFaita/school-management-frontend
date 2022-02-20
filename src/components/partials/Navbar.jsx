@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -8,10 +9,10 @@ const Navbar = () => {
     <nav className="p-4">
       { !isAuth ? 
       <div className="flex justify-between">
-        <div>
+        <Link to='/profile' className="cursor-pointer">
           <h1 className="text-lg font-semibold text-gray-800">Hi, Sir Paul</h1>
           <h3 className="text-gray-400 text-sm">Teacher</h3>
-        </div>
+        </Link>
         <input type="search" placeholder="Search something" className="font-light border border-gray-200 p-2 rounded outline-none" />
       </div> : 
       <div className="flex gap-10 p-2 bg-gray-100 rounded w-1/5 text-base">

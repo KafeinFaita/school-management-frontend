@@ -6,11 +6,13 @@ import { AiOutlineUser,AiOutlineLock } from 'react-icons/ai';
 const Signup = () => {
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
+    const [role,setRole] = useState('');
+
 
     const navigate = useNavigate();
     const onSignup = (e) => {
         e.preventDefault();
-        axios.post('/signup',{ username, password })
+        axios.post('/signup',{ username, password, role })
         .then((data) => {
             navigate(data.data.redirect);
         }).catch(err => console.log(err))
@@ -25,6 +27,11 @@ const Signup = () => {
                     <div className="flex items-center gap-2">
                         <AiOutlineUser className="text-gray-400" />
                         <input className="bg-transparent w-full border-b border-gray-500 outline-none p-2" type="text" required onChange={(e) => setUsername(e.target.value)} value={username} />
+                        <select className="bg-transparent w-1/2 border-b border-gray-500 outline-none p-2" value={role} onChange={(e) => setRole(e.target.value)}>
+                            <option value="teacher">Teacher</option>
+                            <option value="student">Student</option>
+                            <option value="admin">Admin</option>
+                        </select>
                     </div>
                 </div>
                 <div className="flex flex-col mt-10">

@@ -12,7 +12,7 @@ const Dashboard = () => {
     const fetchData = async () => {
       try {
         const data = await axios.get('dashboard')
-        console.log('done')
+        console.log(data)
         setIsVerified(data.data.verified)
         
       } catch (error) {
