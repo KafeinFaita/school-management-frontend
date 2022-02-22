@@ -1,14 +1,17 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { useNavigate,Link } from 'react-router-dom';
+import { useNavigate,Link,useLocation } from 'react-router-dom';
 import { AiOutlineUser,AiOutlineLock } from 'react-icons/ai';
 
-const Login = ({ msg }) => {
+const Login = () => {
 
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
     
     const navigate = useNavigate();
+    const { state } = useLocation()
+
+    console.log(state)
 
     const onLogin= (e) => {
         e.preventDefault();
@@ -18,7 +21,6 @@ const Login = ({ msg }) => {
         })
     }
 
-    console.log(msg)
    
   return (
     <div className="flex justify-center h-screen">

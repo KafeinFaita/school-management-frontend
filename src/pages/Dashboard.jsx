@@ -6,29 +6,20 @@ import axios from 'axios'
 const Dashboard = () => {
 
   const [ isVerified, setIsVerified ] = useState(false)
-  const [ delayRender, setDelayRender ] = useState(<h1>Verifying user...</h1>)
   const [ msg, setMsg ] = useState('')
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const data = await axios.get('dashboard')
-        console.log(data)
+        console.log(data.data.msg)
         setIsVerified(data.data.verified)
         setMsg(data.data.msg)
       } catch (error) {
         console.log(error)
       }
     }
-
-    (async() => {
-      await fetchData()
-      console.log('test')
-      if (!isVerified) {
-        const timeout = setTimeout(() => setDelayRender(<Navigate to='/login' msg={msg}/>), 2000)
-        return () => clearTimeout(timeout)
-      }
-    })()
+    fetchData()
   }, [isVerified])  
 
   if (isVerified) {
@@ -38,7 +29,15 @@ const Dashboard = () => {
       </div>
     )
   }
-  return delayRender
+
+  if (msg) return <Navigate to='/login' state={ {msg: msg} }/>
+
+  return <>
+    <h1>Verifying user...</h1>
+  </>
+
 }
+
+
 
 export default Dashboard
