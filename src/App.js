@@ -8,7 +8,6 @@ import Login from './pages/auth/Login';
 import Dashboard from './pages/Dashboard';
 import NotFound from './pages/NotFound';
 import Reports from './pages/Reports';
-import ProtectedRoute from './routes/ProtectedRoute';
 import Profile from './pages/Profile';
 
 

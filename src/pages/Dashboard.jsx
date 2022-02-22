@@ -7,6 +7,7 @@ const Dashboard = () => {
 
   const [ isVerified, setIsVerified ] = useState(false)
   const [ delayRender, setDelayRender ] = useState(<h1>Verifying user...</h1>)
+  const [ msg, setMsg ] = useState()
 
   useEffect(() => {
     const fetchData = async () => {
