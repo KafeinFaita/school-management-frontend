@@ -1,12 +1,18 @@
-import { useState } from 'react';
+import { useState,useContext } from 'react';
 import axios from 'axios';
 import { useNavigate,Link,useLocation } from 'react-router-dom';
 import { AiOutlineUser,AiOutlineLock } from 'react-icons/ai';
+import { GlobalContext } from '../../helper/Context';
 
 const Login = () => {
+<<<<<<< HEAD
 
+=======
+    const {mssg} = useContext(GlobalContext);
+>>>>>>> e45d14b7348c78771c67724bf6c78a2c073ce4d5
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
+    console.log(mssg);
     
     const navigate = useNavigate();
     const { state } = useLocation()
