@@ -1,13 +1,13 @@
 import Datetime from "../components/Datetime"
-import { useState, useEffect } from 'react' 
+import { useState, useEffect,useContext } from 'react' 
 import { Navigate } from 'react-router-dom';
 import axios from 'axios'
+import { GlobalContext } from "../helper/Context";
 
 const Dashboard = () => {
-
+  const { setMssg } = useContext(GlobalContext);
   const [ isVerified, setIsVerified ] = useState(false)
   const [ delayRender, setDelayRender ] = useState(<h1>Verifying user...</h1>)
-  const [ msg, setMsg ] = useState('')
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,7 +15,7 @@ const Dashboard = () => {
         const data = await axios.get('dashboard')
         console.log(data)
         setIsVerified(data.data.verified)
-        setMsg(data.data.msg)
+        setMssg(data.data.msg)
       } catch (error) {
         console.log(error)
       }
@@ -25,11 +25,11 @@ const Dashboard = () => {
       await fetchData()
       console.log('test')
       if (!isVerified) {
-        const timeout = setTimeout(() => setDelayRender(<Navigate to='/login' msg={msg}/>), 2000)
+        const timeout = setTimeout(() => setDelayRender(<Navigate to='/login' />), 2000)
         return () => clearTimeout(timeout)
       }
     })()
-  }, [isVerified])  
+  }, [isVerified,setMssg])  
 
   if (isVerified) {
     return (

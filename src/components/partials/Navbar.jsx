@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 
-  const [isAuth,setIsAuth] = useState(false);
+  const [isAuth] = useState(false);
 
   return (
     <nav className="p-4">

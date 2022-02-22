@@ -1,12 +1,14 @@
-import { useState } from 'react';
+import { useState,useContext } from 'react';
 import axios from 'axios';
 import { useNavigate,Link } from 'react-router-dom';
 import { AiOutlineUser,AiOutlineLock } from 'react-icons/ai';
+import { GlobalContext } from '../../helper/Context';
 
-const Login = ({ msg }) => {
-
+const Login = () => {
+    const {mssg} = useContext(GlobalContext);
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
+    console.log(mssg);
     
     const navigate = useNavigate();
 
@@ -18,7 +20,6 @@ const Login = ({ msg }) => {
         })
     }
 
-    console.log(msg)
    
   return (
     <div className="flex justify-center h-screen">
