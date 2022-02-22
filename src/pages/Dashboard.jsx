@@ -5,7 +5,7 @@ import axios from 'axios'
 import { GlobalContext } from "../helper/Context";
 
 const Dashboard = () => {
-  const { setMssg } = useContext(GlobalContext);
+  // const { setMssg } = useContext(GlobalContext);
   const [ isVerified, setIsVerified ] = useState(false)
   const [ msg, setMsg ] = useState('')
 
