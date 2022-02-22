@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate,Link } from 'react-router-dom';
 import { AiOutlineUser,AiOutlineLock } from 'react-icons/ai';
 
-const Login = () => {
+const Login = ({ msg }) => {
 
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
@@ -17,6 +17,8 @@ const Login = () => {
             navigate(data.data.redirect);
         })
     }
+
+    console.log(msg)
    
   return (
     <div className="flex justify-center h-screen">
