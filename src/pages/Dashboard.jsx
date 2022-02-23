@@ -1,28 +1,34 @@
 import Datetime from "../components/Datetime"
-import { useState, useEffect,useContext } from 'react' 
+import { useState, useEffect, useContext } from 'react' 
 import { Navigate } from 'react-router-dom';
 import axios from 'axios'
 import { GlobalContext } from "../helper/Context";
 
 const Dashboard = () => {
-  // const { setMssg } = useContext(GlobalContext);
-  const [ isVerified, setIsVerified ] = useState(false)
-  const [ msg, setMsg ] = useState('')
+  const { setMssg } = useContext(GlobalContext);
+  const [ isVerified, setIsVerified ] = useState(false);
+  const [errMssg,setErrMssg] = useState('');
 
   useEffect(() => {
+    const abortCont = new AbortController();
     const fetchData = async () => {
+
       try {
-        const data = await axios.get('dashboard')
-        console.log(data.data.msg)
+        const data = await axios.get('dashboard',{ signal: abortCont.signal })
         setIsVerified(data.data.verified)
-        setMsg(data.data.msg)
+        setErrMssg(data.data.msg)
       } catch (error) {
         console.log(error)
       }
     }
     fetchData()
-  }, [isVerified])  
+    return () => abortCont.abort();
+  }, [isVerified,setMssg])  
 
+  useEffect(() => {
+    setMssg(errMssg);
+  },[errMssg,setMssg])
+  
   if (isVerified) {
     return (
       <div className="h-full px-10">
@@ -31,7 +37,7 @@ const Dashboard = () => {
     )
   }
 
-  if (msg) return <Navigate to='/login' state={ {msg: msg} }/>
+  if (errMssg) return <Navigate to='/login' />
 
   return <>
     <h1>Verifying user...</h1>

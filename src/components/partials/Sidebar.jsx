@@ -12,34 +12,40 @@ const Sidebar = () => {
         
         <ul className="text-gray-100 flex flex-col gap-5">
           <li className="flex items-center justify-end">
-            <Link to='/' className="sidebar-hover">
+            <Link to='/dashboard' className="sidebar-hover">
               <MdOutlineDashboardCustomize className="mr-5" />
               Dashboard
             </Link>
           </li>
           <li className="flex items-center justify-end">
-            <div className="sidebar-hover">
+            <Link to='/enrollment' className="sidebar-hover">
               <AiOutlineIdcard className="mr-5" />
               Enrollment
-            </div>
+            </Link>
           </li>
           <li className="flex items-center justify-end">
-            <div className="sidebar-hover">
+            <Link to='/admission' className="sidebar-hover">
+              <AiOutlineIdcard className="mr-5" />
+              Admission
+            </Link>
+          </li>
+          <li className="flex items-center justify-end">
+            <Link to='/registrar' className="sidebar-hover">
               <HiOutlineUserGroup className="mr-5" />
               Registrar
-            </div>
+            </Link>
           </li>
           <li className="flex items-center justify-end">
-            <div className="sidebar-hover">
+            <Link to='/finance' className="sidebar-hover">
               <FaRegMoneyBillAlt className="mr-5" />
               Finance
-            </div>
+            </Link>
           </li>
           <li className="flex items-center justify-end">
-            <div className="sidebar-hover">
+            <Link to='/school-calendar' className="sidebar-hover">
               <BsCalendarCheck className="mr-5" />
               School Calendar
-            </div>
+            </Link>
           </li>
           <li className="flex items-center justify-end">
             <Link to='/reports' className="sidebar-hover">
