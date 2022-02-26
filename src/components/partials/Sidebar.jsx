@@ -53,6 +53,7 @@ const Sidebar = () => {
               Reports
             </Link>
           </li>
+          <Link to='/login'>Login</Link>
         </ul>
     </nav>
   )
