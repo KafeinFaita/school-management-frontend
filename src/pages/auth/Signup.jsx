@@ -12,10 +12,16 @@ const Signup = () => {
     const navigate = useNavigate();
     const onSignup = (e) => {
         e.preventDefault();
+
+       if(password.length < 8) {
+           alert('password must be greater than 8 characters');
+       } else {
         axios.post('/signup',{ username, password, role })
         .then((data) => {
             navigate(data.data.redirect);
-        }).catch(err => console.log(err))
+        })
+        .catch(err => console.log(err))
+       }
     }
   return (
     <div className="flex justify-center h-screen">
