@@ -12,12 +12,12 @@ const Login = () => {
     const [password,setPassword] = useState('');
     const [passErr,setPassErr] = useState('');
     const [userErr,setUserErr] = useState('');
-    console.log(baseUrl);
+    
     const navigate = useNavigate();
     
     const onLogin= (e) => {
         e.preventDefault();
-        axios.post(`/login`,{ username,password })
+        axios.post(`${baseUrl}/login`,{ username,password })
         .then((data) => {
             navigate(data.data.redirect);
         })
