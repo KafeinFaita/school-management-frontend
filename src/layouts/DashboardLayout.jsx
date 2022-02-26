@@ -6,7 +6,7 @@ const DashboardLayout = () => {
   return (
     <>  
         <Sidebar />
-        <div className="ml-72 h-full overflow-hidden select-none">
+        <div className="ml-72 h-auto select-none">
             <Navbar />
             <Outlet />
         </div>
