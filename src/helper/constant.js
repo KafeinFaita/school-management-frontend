@@ -1,1 +1,1 @@
-export const baseUrl = "https://school-system-andres.herokuapp.com/"
+export const baseUrl = "https://school-system-andres.herokuapp.com/" || "http://localhost:3001/"
