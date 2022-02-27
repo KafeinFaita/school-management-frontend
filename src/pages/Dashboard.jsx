@@ -8,13 +8,15 @@ import { baseUrl } from "../helper/function";
 const Dashboard = () => {
   const { setMssg } = useContext(GlobalContext);
   const [ isVerified, setIsVerified ] = useState(false);
-  const [errMssg,setErrMssg] = useState('');
+  const [ errMssg,setErrMssg ] = useState('');
 
   useEffect(() => {
     const abortCont = new AbortController();
+    const test = baseUrl() 
+    console.log(test)
     const fetchData = async () => {
-      try {  
-        const data = await axios.get(`${baseUrl()}dashboard`,{ signal: abortCont.signal })
+      try { 
+        const data = await axios.get(`${test}dashboard`,{ signal: abortCont.signal })
         setIsVerified(data.data.verified)
         setErrMssg(data.data.msg)
       } catch (error) {
