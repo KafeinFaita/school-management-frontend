@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate,Link } from 'react-router-dom';
 import { AiOutlineUser,AiOutlineLock } from 'react-icons/ai';
-import { baseUrl } from '../../helper/constant';
+import { baseUrl } from '../../helper/function';
 
 const Signup = () => {
     const [username,setUsername] = useState('');
@@ -16,7 +16,7 @@ const Signup = () => {
        if(password.length < 8) {
            alert('password must be greater than 8 characters');
        } else {
-        axios.post(`/api/signup`,{ username, password, role })
+        axios.post(`${baseUrl()}signup`,{ username, password, role })
         .then((data) => {
             navigate(data.data.redirect);
         })
