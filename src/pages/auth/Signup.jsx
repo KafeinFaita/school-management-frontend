@@ -16,7 +16,7 @@ const Signup = () => {
        if(password.length < 8) {
            alert('password must be greater than 8 characters');
        } else {
-        axios.post(`${baseUrl}/signup`,{ username, password, role })
+        axios.post(`/api/signup`,{ username, password, role })
         .then((data) => {
             navigate(data.data.redirect);
         })
