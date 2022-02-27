@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate,Link } from 'react-router-dom';
 import { AiOutlineUser,AiOutlineLock } from 'react-icons/ai';
 import { GlobalContext } from '../../helper/Context';
-import { baseUrl } from '../../helper/constant';
+import { baseUrl } from '../../helper/function';
 
 const Login = () => {
     const { mssg } = useContext(GlobalContext);
@@ -18,7 +18,7 @@ const Login = () => {
     const onLogin= (e) => {
         e.preventDefault();
         
-        axios.post(`/api/login`,{ username,password })
+        axios.post(`${baseUrl}login`,{ username,password })
         .then((data) => {
             navigate(data.data.redirect);
         })

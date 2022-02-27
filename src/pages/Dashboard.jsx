@@ -3,7 +3,7 @@ import { useState, useEffect, useContext } from 'react'
 import { Navigate } from 'react-router-dom';
 import axios from 'axios'
 import { GlobalContext } from "../helper/Context";
-import { baseUrl } from "../helper/constant";
+import { baseUrl } from "../helper/function";
 
 const Dashboard = () => {
   const { setMssg } = useContext(GlobalContext);
@@ -14,7 +14,7 @@ const Dashboard = () => {
     const abortCont = new AbortController();
     const fetchData = async () => {
       try {  
-        const data = await axios.get(`/api/dashboard`,{ signal: abortCont.signal })
+        const data = await axios.get(`${baseUrl()}dashboard`,{ signal: abortCont.signal })
         setIsVerified(data.data.verified)
         setErrMssg(data.data.msg)
       } catch (error) {
