@@ -14,7 +14,7 @@ const Dashboard = () => {
     const abortCont = new AbortController();
     const fetchData = async () => {
       try {  
-        const data = await axios.get(`${baseUrl}/dashboard`,{ signal: abortCont.signal })
+        const data = await axios.get(`/dashboard`,{ signal: abortCont.signal })
         setIsVerified(data.data.verified)
         setErrMssg(data.data.msg)
       } catch (error) {

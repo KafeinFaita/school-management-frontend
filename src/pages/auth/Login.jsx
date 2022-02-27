@@ -18,7 +18,7 @@ const Login = () => {
     const onLogin= (e) => {
         e.preventDefault();
         
-        axios.post(`${baseUrl}/login`,{ username,password })
+        axios.post(`/login`,{ username,password })
         .then((data) => {
             navigate(data.data.redirect);
         })

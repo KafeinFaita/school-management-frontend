@@ -1,0 +1,7 @@
+{
+    "proxies": {
+        "/": {
+            "origin:": "https://school-system-andres.herokuapp.com/"
+        }
+    }
+}
