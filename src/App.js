@@ -19,10 +19,13 @@ import SchoolCalendar from './pages/SchoolCalendar';
 
 function App() {
 
+  // Message for login page
   const [mssg,setMssg] = useState('');
+  // For Navbar
+  const [isAuth,setIsAuth] = useState(false);
 
   return (
-    <GlobalContext.Provider value={{ mssg,setMssg }}>
+    <GlobalContext.Provider value={{ mssg,setMssg,isAuth,setIsAuth }}>
       <Routes>
         <Route path='/' element={ <Navigate to='/dashboard' /> } />
         <Route path='/signup' element={ <Signup /> } />

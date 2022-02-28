@@ -1,7 +1,10 @@
+import Datetime from "../components/Datetime"
 
 const Profile = () => {
   return (
-    <div>Profile</div>
+    <div className="px-10 h-full">
+      <Datetime title="Profile" />
+    </div>
   )
 }
 

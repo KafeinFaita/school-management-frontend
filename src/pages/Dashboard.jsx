@@ -6,20 +6,21 @@ import { GlobalContext } from "../helper/Context";
 import { baseUrl } from "../helper/function";
 
 const Dashboard = () => {
-  const { setMssg } = useContext(GlobalContext);
+  const { setMssg,setIsAuth } = useContext(GlobalContext);
   const [ isVerified, setIsVerified ] = useState(false);
   const [ errMssg,setErrMssg ] = useState('');
 
   useEffect(() => {
     const abortCont = new AbortController();
     const test = baseUrl() 
-    console.log(test)
     const fetchData = async () => {
       try { 
         const data = await axios.get(`${test}dashboard`,{ signal: abortCont.signal })
         setIsVerified(data.data.verified)
+        setIsAuth(data.data.verified)
         setErrMssg(data.data.msg)
-      } catch (error) {
+      } 
+      catch (error) {
         console.log(error)
       }
     }
@@ -42,7 +43,7 @@ const Dashboard = () => {
   if (errMssg) return <Navigate to='/login' />
 
   return <>
-    <h1>Verifying user...</h1>
+    <h1 className="font-semibold mt-10 px-10">Please wait</h1>
   </>
 
 }
