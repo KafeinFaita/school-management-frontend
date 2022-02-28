@@ -39,8 +39,9 @@ const Dashboard = () => {
       </div>
     )
   }
-
-  if (errMssg) return <Navigate to='/login' />
+  
+  if (errMssg === "You don't have enough privilege to view this page.") return <Navigate to={`/profile`} />
+  if (errMssg === 'Please log in.') return <Navigate to='/login' />
 
   return <>
     <h1 className="font-semibold mt-10 px-10">Please wait</h1>
