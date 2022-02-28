@@ -23,9 +23,33 @@ const AdmissionForm = () => {
     const [lastAttended,setLastAttended] = useState('');
     
     const onAdmit = async () => {
-        const admissionDetails = { lastName,firstName,middleName,gender,dateOfBirth,placeOfBirth,address,nationality,religion,mobileNumber,
-        email,studentStatus,gradeLevel,lrn,department,strand,session,lastAttended }
-        console.log(admissionDetails);
+        const admissionDetails = { 
+            lastname:lastName,
+            firstname:firstName,
+            middlename:middleName,
+            gender,
+            dob:dateOfBirth,
+            pob:placeOfBirth,
+            address,
+            nationality,
+            religion,
+            mobile:mobileNumber,
+            email,
+            status:studentStatus,
+            grade:gradeLevel,
+            lrn,
+            department,
+            strand,
+            session,
+            lastschool:lastAttended }
+        
+        axios.post('/admission',{ admissionDetails })
+        .then((data) => {
+            console.log(data);
+        })
+        .catch(err => {
+            console.log(err)
+        }) 
     }
 
   return (
