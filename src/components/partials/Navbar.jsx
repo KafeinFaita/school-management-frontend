@@ -5,15 +5,16 @@ import { GlobalContext } from '../../helper/Context';
 const Navbar = () => {
 
   const { isAuth } = useContext(GlobalContext);
-  console.log(isAuth);
+  const username = localStorage.getItem('username').charAt(0).toUpperCase() + localStorage.getItem('username').slice(1);
+  const role = localStorage.getItem('role');
 
   return (
     <nav className="p-4">
       { isAuth ? 
       <div className="flex justify-between">
         <Link to='/profile' className="cursor-pointer">
-          <h1 className="text-lg font-semibold text-gray-800">Hi, Sir Paul</h1>
-          <h3 className="text-gray-400 text-sm">Teacher</h3>
+          <h1 className="text-lg font-semibold text-gray-800">Hi, { username }</h1>
+          <h3 className="text-gray-400 text-sm">{ role }</h3>
         </Link>
         <input type="search" placeholder="Search something" className="font-light border border-gray-200 p-2 rounded outline-none" />
       </div> : 
