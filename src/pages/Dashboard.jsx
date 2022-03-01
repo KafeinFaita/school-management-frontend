@@ -1,7 +1,6 @@
 import Datetime from "../components/Datetime"
 import { useState, useEffect, useContext } from 'react' 
 import { Navigate } from 'react-router-dom';
-// import axios from 'axios'
 import { GlobalContext } from "../helper/Context";
 import { fetchData } from "../helper/function";
 
