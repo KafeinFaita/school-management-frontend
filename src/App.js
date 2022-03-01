@@ -19,13 +19,18 @@ import SchoolCalendar from './pages/SchoolCalendar';
 
 function App() {
 
+  // For protecting pages and allowing users to view certain page
+  const [ isVerified, setIsVerified ] = useState(false);
+  const [isAuthenticated,setIsAuthenticated] = useState(false);
+
   // Message for login page
   const [mssg,setMssg] = useState('');
+  const [ errMssg,setErrMssg ] = useState('');
   // For Navbar
   const [isAuth,setIsAuth] = useState(false);
 
   return (
-    <GlobalContext.Provider value={{ mssg,setMssg,isAuth,setIsAuth }}>
+    <GlobalContext.Provider value={{ mssg,setMssg,isAuth,setIsAuth,isVerified, setIsVerified,isAuthenticated,setIsAuthenticated,errMssg,setErrMssg }}>
       <Routes>
         <Route path='/' element={ <Navigate to='/dashboard' /> } />
         <Route path='/signup' element={ <Signup /> } />
