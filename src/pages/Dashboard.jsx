@@ -3,7 +3,7 @@ import { useState, useEffect, useContext } from 'react'
 import { Navigate } from 'react-router-dom';
 import axios from 'axios'
 import { GlobalContext } from "../helper/Context";
-import { baseUrl } from "../helper/function";
+import { baseUrl, fetchData } from "../helper/function";
 
 const Dashboard = () => {
   const { setMssg,setIsAuth } = useContext(GlobalContext);
@@ -13,18 +13,18 @@ const Dashboard = () => {
   useEffect(() => {
     const abortCont = new AbortController();
     const test = baseUrl() 
-    const fetchData = async () => {
-      try { 
-        const data = await axios.get(`${test}dashboard`,{ signal: abortCont.signal })
-        setIsVerified(data.data.verified)
-        setIsAuth(data.data.verified)
-        setErrMssg(data.data.msg)
-      } 
-      catch (error) {
-        console.log(error)
-      }
-    }
-    fetchData()
+    // const fetchData = async () => {
+    //   try { 
+    //     const data = await axios.get(`${baseUrl()}dashboard`,{ signal: abortCont.signal })
+    //     setIsVerified(data.data.verified)
+    //     setIsAuth(data.data.verified)
+    //     setErrMssg(data.data.msg)
+    //   } 
+    //   catch (error) {
+    //     console.log(error)
+    //   }
+    // }
+    fetchData(baseUrl(), '/dashboard',{ signal: abortCont.signal }, setIsVerified, setIsAuth, setErrMssg)
     return () => abortCont.abort();
   }, [isVerified,setMssg])  
 
