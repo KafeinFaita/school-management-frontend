@@ -1,9 +1,9 @@
 import Datetime from "../components/Datetime"
 import { useState, useEffect, useContext } from 'react' 
 import { Navigate } from 'react-router-dom';
-import axios from 'axios'
+// import axios from 'axios'
 import { GlobalContext } from "../helper/Context";
-import { baseUrl, fetchData } from "../helper/function";
+import { fetchData } from "../helper/function";
 
 const Dashboard = () => {
   const { setMssg,setIsAuth } = useContext(GlobalContext);
@@ -12,7 +12,6 @@ const Dashboard = () => {
 
   useEffect(() => {
     const abortCont = new AbortController();
-    const test = baseUrl() 
     // const fetchData = async () => {
     //   try { 
     //     const data = await axios.get(`${baseUrl()}dashboard`,{ signal: abortCont.signal })
@@ -24,7 +23,7 @@ const Dashboard = () => {
     //     console.log(error)
     //   }
     // }
-    fetchData(baseUrl(), '/dashboard',{ signal: abortCont.signal }, setIsVerified, setIsAuth, setErrMssg)
+    fetchData({ signal: abortCont.signal }, setIsVerified, setIsAuth, setErrMssg)
     return () => abortCont.abort();
   }, [isVerified,setMssg])  
 

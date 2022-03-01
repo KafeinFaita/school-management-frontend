@@ -5,9 +5,9 @@ export const baseUrl = () => {
     return "/api/"
 }
 
-export const fetchData = async (endpoint, url, abort, verifiedState, authState, msgState) => {
+export const fetchData = async (abort, verifiedState, authState, msgState) => {
     try { 
-      const data = await axios.get(`${url}${endpoint}`, abort)
+      const data = await axios.get(`${baseUrl()}auth_user_role`, abort)
       verifiedState(data.data.verified)
       authState(data.data.verified)
       msgState(data.data.msg)
