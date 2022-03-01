@@ -15,7 +15,8 @@ const Dashboard = () => {
     const test = baseUrl() 
     const fetchData = async () => {
       try { 
-        const data = await axios.get(`${test}dashboard`,{ signal: abortCont.signal })
+        const data = await axios.get(`${test}auth_user`,{ signal: abortCont.signal })
+        console.log(data.data)
         setIsVerified(data.data.verified)
         setIsAuth(data.data.verified)
         setErrMssg(data.data.msg)
