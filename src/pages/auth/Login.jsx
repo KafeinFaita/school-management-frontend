@@ -1,4 +1,4 @@
-import { useState,useContext } from 'react';
+import { useState,useContext,useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate,Link } from 'react-router-dom';
 import { AiOutlineUser,AiOutlineLock } from 'react-icons/ai';
@@ -6,21 +6,39 @@ import { GlobalContext } from '../../helper/Context';
 import { baseUrl } from '../../helper/function';
 
 const Login = () => {
-    const { mssg } = useContext(GlobalContext);
+    const { setMssg,mssg } = useContext(GlobalContext);
     
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
     const [passErr,setPassErr] = useState('');
     const [userErr,setUserErr] = useState('');
+
  
     const navigate = useNavigate();
     
+    useEffect(() => {
+        const abortCont = new AbortController();
+
+        axios.get('/auth_user')
+        .then((data) => {
+            if(data.data.verified) {
+                navigate('/');
+            }
+            
+        })
+        .catch(err => console.log(err))
+
+        return () => abortCont.abort()
+    },[navigate])
+
     const onLogin= (e) => {
         e.preventDefault();
         
         axios.post(`${baseUrl()}login`,{ username,password })
         .then((data) => {
             navigate(data.data.redirect);
+            localStorage.setItem('username',data.data.username);
+            localStorage.setItem('role',data.data.role);
         })
         .catch(err => {
             setUserErr(err.response.data.userErr);
