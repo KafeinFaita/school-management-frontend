@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export const baseUrl = () => {
     if(!process.env.NODE_ENV || process.env.NODE_ENV === 'development') return ""
-    return "/api"
+    return "/api/"
 }
 
 export const fetchData = async (abort, currentLocation, verifiedState, authState, msgState) => {
