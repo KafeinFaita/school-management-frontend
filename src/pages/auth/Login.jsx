@@ -6,7 +6,7 @@ import { GlobalContext } from '../../helper/Context';
 import { baseUrl } from '../../helper/function';
 
 const Login = () => {
-    const { mssg } = useContext(GlobalContext);
+    const { mssg, setRole, setUser } = useContext(GlobalContext);
     
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
@@ -35,6 +35,8 @@ const Login = () => {
         
         axios.post(`${baseUrl()}login`,{ username,password })
         .then((data) => {
+            setUser(data.data.username)
+            setRole(data.data.role)
             navigate(data.data.redirect);
         })
         .catch(err => {

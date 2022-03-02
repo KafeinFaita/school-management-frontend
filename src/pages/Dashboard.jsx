@@ -5,32 +5,22 @@ import { GlobalContext } from "../helper/Context";
 import { fetchData } from "../helper/function";
 
 const Dashboard = () => {
-  const { setMssg,setIsAuth } = useContext(GlobalContext);
+  const { setMssg } = useContext(GlobalContext);
   const [ isVerified, setIsVerified ] = useState(false);
-  const [ errMssg,setErrMssg ] = useState('');
+  const [ isAuth, setIsAuth ] = useState(false);
+  const [ errMssg,setErrMssg ] = useState(''); 
 
   useEffect(() => {
     const abortCont = new AbortController();
-    // const fetchData = async () => {
-    //   try { 
-    //     const data = await axios.get(`${baseUrl()}dashboard`,{ signal: abortCont.signal })
-    //     setIsVerified(data.data.verified)
-    //     setIsAuth(data.data.verified)
-    //     setErrMssg(data.data.msg)
-    //   } 
-    //   catch (error) {
-    //     console.log(error)
-    //   }
-    // }
     fetchData({ signal: abortCont.signal }, setIsVerified, setIsAuth, setErrMssg)
     return () => abortCont.abort();
-  }, [isVerified,setMssg])  
+  }, [isAuth,setMssg])  
 
   useEffect(() => {
     setMssg(errMssg);
   },[errMssg,setMssg])
   
-  if (isVerified) {
+  if (isVerified && isAuth) {
     return (
       <div className="h-full px-10">
         <Datetime title='Dashboard' />

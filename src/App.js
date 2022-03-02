@@ -22,10 +22,11 @@ function App() {
   // Message for login page
   const [mssg,setMssg] = useState('');
   // For Navbar
-  const [isAuth,setIsAuth] = useState(false);
+  const [role, setRole] = useState('')
+  const [user, setUser] = useState('')
 
   return (
-    <GlobalContext.Provider value={{ mssg,setMssg,isAuth,setIsAuth }}>
+    <GlobalContext.Provider value={{ mssg,setMssg, user, setUser, role, setRole }}>
       <Routes>
         <Route path='/' element={ <Navigate to='/dashboard' /> } />
         <Route path='/signup' element={ <Signup /> } />
