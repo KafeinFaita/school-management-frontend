@@ -7,7 +7,7 @@ const Navbar = () => {
   const { isAuth } = useContext(GlobalContext);
   const username = localStorage.getItem('username').charAt(0).toUpperCase() + localStorage.getItem('username').slice(1);
   const role = localStorage.getItem('role');
-
+  
   return (
     <nav className="p-4">
       { isAuth ? 

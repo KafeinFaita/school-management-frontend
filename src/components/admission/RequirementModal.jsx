@@ -7,9 +7,7 @@ const RequirementModal = ({ setViewReq }) => {
             <h1 className="text-gray-100 text-3xl font-semibold">Student Admission Requirements</h1>
             <button onClick={() => setViewReq(false)} className="text-gray-100 bg-red-500 p-2 rounded">Close</button>
         </div>
-
         <RequirementTable />
-
     </div>
   )
 }

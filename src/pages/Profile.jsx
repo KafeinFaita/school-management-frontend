@@ -16,16 +16,14 @@ const Profile = () => {
    return () => abortCont.abort();
  }, [isVerified,isAuthenticated]);
 
- console.log(isVerified,isAuthenticated)
 
- if(isVerified === true && isAuthenticated === false || isVerified === true && isAuthenticated === true ) {
+ if(isVerified === true && isAuthenticated === false || isVerified === true && isAuthenticated === true) {
     return (
       <div className="px-10 h-full">
         <Datetime title="Profile" />
       </div>
     )
  }
-
   
   return <Navigate to='/login' />
 }
