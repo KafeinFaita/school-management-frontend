@@ -1,7 +1,7 @@
 import { AiOutlineIdcard } from 'react-icons/ai';
 import { HiOutlineUserGroup,HiOutlineClipboardList } from 'react-icons/hi';
 import { FaRegMoneyBillAlt } from 'react-icons/fa';
-import { BsCalendarCheck } from 'react-icons/bs';
+import { BsCalendarCheck,BsFilePerson } from 'react-icons/bs';
 import { MdOutlineDashboardCustomize } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
@@ -21,6 +21,12 @@ const Sidebar = () => {
             <Link to='/enrollment' className="sidebar-hover">
               <AiOutlineIdcard className="mr-5" />
               Enrollment
+            </Link>
+          </li>
+          <li className="flex items-center justify-end">
+            <Link to='/students' className="sidebar-hover">
+              <BsFilePerson className="mr-5" />
+              Students
             </Link>
           </li>
           <li className="flex items-center justify-end">
