@@ -13,7 +13,7 @@ const Login = () => {
     const [passErr,setPassErr] = useState('');
     const [userErr,setUserErr] = useState('');
 
-    const [ isVerified, setIsVerified ] = useState(false);
+    const [ isVerified, setIsVerified ] = useState();
  
     const navigate = useNavigate();
 
@@ -30,20 +30,20 @@ const Login = () => {
        
     }, [])
     
-    useEffect(() => {
-        const abortCont = new AbortController();
+    // useEffect(() => {
+    //     const abortCont = new AbortController();
 
-        axios.get('/auth_user')
-        .then((data) => {
-            if(data.data.verified) {
-                navigate('/');
-            }
+    //     axios.get('/auth_user')
+    //     .then((data) => {
+    //         if(data.data.verified) {
+    //             navigate('/');
+    //         }
             
-        })
-        .catch(err => console.log(err))
+    //     })
+    //     .catch(err => console.log(err))
 
-        return () => abortCont.abort()
-    },[navigate])
+    //     return () => abortCont.abort()
+    // },[navigate])
 
     const onLogin= (e) => {
         e.preventDefault();
