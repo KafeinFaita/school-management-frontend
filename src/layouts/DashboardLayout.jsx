@@ -47,7 +47,6 @@ const DashboardLayout = () => {
       return <h1>Please wait</h1>
     }
      
-
     if (errMssg === "You don't have enough privilege to view this page.") return <h1>Not allowed</h1> //return <Navigate to={`/profile`} /> 
     if (errMssg === 'Please log in.') return <Navigate to='/login' />
   
@@ -59,7 +58,6 @@ const DashboardLayout = () => {
       <div className="ml-72 h-auto select-none">
           <Navbar />
           {render()}
-          
       </div>
     </>
   )
