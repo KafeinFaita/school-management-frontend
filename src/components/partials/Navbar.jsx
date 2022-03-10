@@ -2,7 +2,7 @@ import { useContext,useState } from 'react';
 import axios from 'axios';
 import { IoMdArrowDropdown } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { GlobalContext } from '../../helper/Context';
 import { baseUrl } from '../../helper/function';
 
@@ -11,12 +11,15 @@ const Navbar = () => {
   const { role, user } = useContext(GlobalContext);
   const [showLogout,setShowLogout] = useState(false);
 
+  const navigate = useNavigate()
+
   const onLogout = async () => {
       try {
         const data = await axios.get(`${baseUrl()}logout`);
         console.log(data);
         localStorage.removeItem('username');
         localStorage.removeItem('role');
+        navigate(`${baseUrl()}login`)
       }
       catch(err) {
         console.log(err);

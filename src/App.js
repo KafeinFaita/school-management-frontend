@@ -28,13 +28,8 @@ function App() {
   const [mssg,setMssg] = useState('');
   const [ errMssg,setErrMssg ] = useState('');
   // For Navbar
-<<<<<<< HEAD
-  const [role, setRole] = useState(localStorage.getItem('role'));
-  const [user, setUser] = useState(localStorage.getItem('username'));
-=======
   const [role, setRole] = useState(localStorage.getItem('role'))
   const [user, setUser] = useState(localStorage.getItem('username'))
->>>>>>> 0bfdf1aac231476a5d1bb95bf904092a53ec6419
 
   return (
     <GlobalContext.Provider value={{ mssg,setMssg, user, setUser, role, setRole }}>
