@@ -47,7 +47,7 @@ const DashboardLayout = () => {
       return <h1>Please wait</h1>
     }
      
-    if (errMssg === "You don't have enough privilege to view this page.") return <h1>{ errMssg }</h1> //return <Navigate to={`/profile`} /> 
+    if (errMssg === "You don't have enough privilege to view this page.") return <h1 className="text-center text-3xl font-semibold mt-5 text-gray-800">{ errMssg }</h1> //return <Navigate to={`/profile`} /> 
     if (errMssg === 'Please log in.') return <Navigate to='/login' />
   
   }

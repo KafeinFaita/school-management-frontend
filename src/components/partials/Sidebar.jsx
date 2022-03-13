@@ -29,12 +29,12 @@ const Sidebar = () => {
               Students
             </Link>
           </li>
-          <li className="flex items-center justify-end">
+          {/* <li className="flex items-center justify-end">
             <Link to='/admission' className="sidebar-hover">
               <AiOutlineIdcard className="mr-5" />
               Admission
             </Link>
-          </li>
+          </li> */}
           <li className="flex items-center justify-end">
             <Link to='/registrar' className="sidebar-hover">
               <HiOutlineUserGroup className="mr-5" />

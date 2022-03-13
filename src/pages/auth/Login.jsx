@@ -74,6 +74,7 @@ const Login = () => {
                     </div>
                     <div className="flex flex-col gap-5 mt-10">
                         <Link className="text-xs text-blue-500 text-center" to='/forgot-password'>Forgot Password?</Link>
+                        <Link className="text-xs text-blue-500 text-center" to='/signup'>Doesn't have account?</Link>
                         <button className="p-2 bg-blue-500 rounded text-gray-100">Login</button>
                         <Link className="text-sm text-blue-500 text-center" to='/'>Back to dashboard</Link>
                     </div>
