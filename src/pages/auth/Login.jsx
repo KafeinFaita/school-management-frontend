@@ -29,21 +29,7 @@ const Login = () => {
         getAuth()
        
     }, [])
-    
-    // useEffect(() => {
-    //     const abortCont = new AbortController();
 
-    //     axios.get('/auth_user')
-    //     .then((data) => {
-    //         if(data.data.verified) {
-    //             navigate('/');
-    //         }
-            
-    //     })
-    //     .catch(err => console.log(err))
-
-    //     return () => abortCont.abort()
-    // },[navigate])
 
     const onLogin= (e) => {
         e.preventDefault();
@@ -69,7 +55,7 @@ const Login = () => {
             <div className="max-w-7xl flex items-center justify-center w-full">
                 <form className="bg-gray-100 rounded shadow-lg w-1/3 p-10" onSubmit={onLogin}>
                     <h1 className="font-bold text-4xl text-gray-800 text-center">Login</h1>
-                    <h2 className="text-red-500 text-sm text-center absolute">{ mssg }</h2>
+                    <h2 className="text-red-500 text-sm text-center absolute">{ isVerified && mssg }</h2>
                     <div className="flex flex-col mt-10">
                         <label className="text-sm text-gray-800" htmlFor="username">Username:</label>
                         <div className="flex items-center gap-2 relative">

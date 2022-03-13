@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const StudentTable = ({ students,startIndex, lastIndex }) => {
+const StudentTable = ({ students }) => {
 
   return (
     <>

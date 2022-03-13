@@ -182,7 +182,7 @@ const Students = () => {
                 </div>
             </div>
         </div>
-        <StudentTable students={currentStudents} startIndex={startIndex} lastIndex={lastIndex} />
+        <StudentTable students={currentStudents} />
         
     </div>
   )
