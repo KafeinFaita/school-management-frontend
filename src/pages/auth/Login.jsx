@@ -13,25 +13,25 @@ const Login = () => {
     const [passErr,setPassErr] = useState('');
     const [userErr,setUserErr] = useState('');
 
-    const [ isVerified, setIsVerified ] = useState();
- 
     const navigate = useNavigate();
 
     useEffect(() => {
         const getAuth = async () => {
             try {
                 const data = await axios.get(`${baseUrl()}auth_user`)
-                setIsVerified(data.data.verified)
+                navigate('/profile')
             } catch (error) {
-                console.log(error)
+                console.log('ok')
             }
         }   
         getAuth()
        
     }, [])
 
+    console.log(`${baseUrl()}`)
 
-    const onLogin= (e) => {
+
+    const onLogin = (e) => {
         e.preventDefault();
         
         axios.post(`${baseUrl()}login`,{ username,password })
@@ -47,8 +47,7 @@ const Login = () => {
             setPassErr(err.response.data.passErr);
         });
     }
-    
-    if (isVerified) return <Navigate to='/profile' />
+
    
     return (
         <div className="flex justify-center h-screen">
