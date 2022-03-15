@@ -26,8 +26,8 @@ const DashboardLayout = () => {
         setLoc(location.pathname)
       } catch (error) {
         console.log(error.response)
-        if (error.response.status === 401 ) return navigate(`${baseUrl()}login`)
-        if (error.response.status === 403) return navigate(`${baseUrl()}profile`)
+        if (error.response.status === 401 ) return navigate(`/login`)
+        if (error.response.status === 403) return navigate(`/profile`)
       }
                   
     }
