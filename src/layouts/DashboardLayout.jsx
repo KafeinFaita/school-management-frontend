@@ -2,12 +2,14 @@ import Sidebar from '../components/partials/Sidebar';
 import Navbar from '../components/partials/Navbar';
 import Datetime from "../components/Datetime"
 import { useState, useEffect, useContext } from 'react' 
-import { Navigate, Outlet, useLocation } from 'react-router-dom';
+import { Navigate, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { GlobalContext } from "../helper/Context";
-import { fetchData } from "../helper/function";
+import { fetchData, baseUrl } from "../helper/function";
+import axios from 'axios';
 
 const DashboardLayout = () => {
 
+  const navigate = useNavigate()
   const location = useLocation()
 
   const { mssg, setMssg } = useContext(GlobalContext);
@@ -16,21 +18,23 @@ const DashboardLayout = () => {
   const [ errMssg,setErrMssg ] = useState('');
   const [ loc, setLoc ] = useState(location.pathname) 
 
-  // useEffect(() => {
-  //   setLoading(false)
-  // }, [location])
-
   useEffect(() => {
     const waitData = async() => {
-      const abortCont = new AbortController();
-      await fetchData({ signal: abortCont.signal }, location.pathname, setIsVerified, setIsAuth, setErrMssg)
-      setLoc(location.pathname)
-      return () => abortCont.abort();
+      try {
+        const data = await axios.get(`${baseUrl()}${location.pathname}`)
+        console.log(data)
+        setLoc(location.pathname)
+      } catch (error) {
+        console.log(error.response)
+        if (error.response.status === 401 ) return navigate(`${baseUrl()}login`)
+        if (error.response.status === 403) return navigate(`${baseUrl()}profile`)
+      }
+                  
     }
 
     waitData()
     
-  }, [location])  
+  }, [location, navigate])  
 
   useEffect(() => {
     setMssg(errMssg);
@@ -42,15 +46,13 @@ const DashboardLayout = () => {
 
 
   const render = () => {
-    if (isVerified && isAuth) {
-      if (loc === location.pathname) return <Outlet/>
-      return <h1>Please wait</h1>
-    }
-     
-    if (errMssg === "You don't have enough privilege to view this page.") return <h1 className="text-center text-3xl font-semibold mt-5 text-gray-800">{ errMssg }</h1> //return <Navigate to={`/profile`} /> 
-    if (errMssg === 'Please log in.') return <Navigate to='/login' />
-  
+    
+    if (loc === location.pathname) return <Outlet/>
+    return <h1>Please wait</h1>
   }
+  //   // if (errMssg === "You don't have enough privilege to view this page.") return <h1 className="text-center text-3xl font-semibold mt-5 text-gray-800">{ errMssg }</h1> //return <Navigate to={`/profile`} /> 
+  //   // if (errMssg === 'Please log in.') return <Navigate to='/login' />
+  // }
 
   return (
     <>  
@@ -58,6 +60,7 @@ const DashboardLayout = () => {
       <div className="ml-72 h-auto select-none">
           <Navbar />
           {render()}
+          
       </div>
     </>
   )
