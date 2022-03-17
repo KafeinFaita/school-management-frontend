@@ -24,7 +24,8 @@ const DashboardLayout = () => {
         const data = await axios.get(`${baseUrl()}${location.pathname}`)
         console.log(data)
         setLoc(location.pathname)
-      } catch (error) {
+      } 
+      catch (error) {
         console.log(error.response)
         if (error.response.status === 401 ) return navigate(`/login`)
         if (error.response.status === 403) return navigate(`/profile`)
@@ -60,7 +61,6 @@ const DashboardLayout = () => {
       <div className="ml-72 h-auto select-none">
           <Navbar />
           {render()}
-          
       </div>
     </>
   )

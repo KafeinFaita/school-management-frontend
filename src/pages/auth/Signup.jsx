@@ -10,18 +10,14 @@ const Signup = () => {
     const [role,setRole] = useState('');
 
     const navigate = useNavigate();
-    const onSignup = (e) => {
+    const onSignup = async (e) => {
         e.preventDefault();
 
-       if(password.length < 8) {
-           alert('password must be greater than 8 characters');
-       } else {
-        axios.post(`${baseUrl()}signup`,{ username, password, role })
-        .then((data) => {
-            navigate(data.data.redirect);
-        })
-        .catch(err => console.log(err))
-       }
+       if(password.length < 8) alert('password must be greater than 8 characters');
+       if(username.length < 6) alert('username should be greater than 6 characters');
+       
+       const userPost = await axios.post(`${baseUrl()}signup`,{ username, password, role });
+       navigate(userPost.data.redirect);
     }
   return (
     <div className="flex justify-center h-screen">
