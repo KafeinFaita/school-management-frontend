@@ -15,9 +15,14 @@ const Signup = () => {
 
        if(password.length < 8) alert('password must be greater than 8 characters');
        if(username.length < 6) alert('username should be greater than 6 characters');
-       
-       const userPost = await axios.post(`${baseUrl()}signup`,{ username, password, role });
-       navigate(userPost.data.redirect);
+
+       try {
+        const userPost = await axios.post(`${baseUrl()}signup`,{ username, password, role });
+        navigate(userPost.data.redirect);
+       }
+       catch(err) {
+           console.log(err)
+       }
     }
   return (
     <div className="flex justify-center h-screen">
