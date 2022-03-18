@@ -12,7 +12,7 @@ const DashboardLayout = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const { mssg, setMssg } = useContext(GlobalContext);
+  const { mssg, setMssg,setUsersList } = useContext(GlobalContext);
   const [ isVerified, setIsVerified ] = useState(false);
   const [ isAuth, setIsAuth ] = useState(false);
   const [ errMssg,setErrMssg ] = useState('');
@@ -23,6 +23,7 @@ const DashboardLayout = () => {
       try {
         const data = await axios.get(`${baseUrl()}${location.pathname}`)
         console.log(data)
+        setUsersList(data.data.userList);
         setLoc(location.pathname)
       } 
       catch (error) {
