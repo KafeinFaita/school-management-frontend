@@ -28,9 +28,6 @@ const Login = () => {
        
     }, [])
 
-    console.log(`${baseUrl()}`)
-
-
     const onLogin = (e) => {
         e.preventDefault();
         
