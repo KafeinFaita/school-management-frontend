@@ -24,6 +24,9 @@ function App() {
   const [ isVerified, setIsVerified ] = useState(false);
   const [isAuthenticated,setIsAuthenticated] = useState(false);
 
+  // For listing users to dashboard for admin
+  const [usersList,setUsersList] = useState([]);
+
   // Message for login page
   const [mssg,setMssg] = useState('');
   const [ errMssg,setErrMssg ] = useState('');
@@ -32,7 +35,7 @@ function App() {
   const [user, setUser] = useState(localStorage.getItem('username'))
 
   return (
-    <GlobalContext.Provider value={{ mssg,setMssg, user, setUser, role, setRole }}>
+    <GlobalContext.Provider value={{ mssg,setMssg, user, setUser, role, setRole, usersList,setUsersList }}>
       <Routes>
         <Route path='/' element={ <Navigate to='/dashboard' /> } />
         <Route path='/signup' element={ <Signup /> } />

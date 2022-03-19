@@ -10,9 +10,10 @@ const Signup = () => {
     const [role,setRole] = useState('');
 
     const navigate = useNavigate();
-    const onSignup = (e) => {
+    const onSignup = async (e) => {
         e.preventDefault();
 
+<<<<<<< HEAD
        if (password.length < 8) {
            alert('password must be greater than 8 characters');
        } else {
@@ -22,6 +23,17 @@ const Signup = () => {
             navigate('/login');
         })
         .catch(err => console.log(err))
+=======
+       if(password.length < 8) alert('password must be greater than 8 characters');
+       if(username.length < 6) alert('username should be greater than 6 characters');
+
+       try {
+        const userPost = await axios.post(`${baseUrl()}signup`,{ username, password, role });
+        navigate(userPost.data.redirect);
+       }
+       catch(err) {
+           console.log(err)
+>>>>>>> a25e0f9d4840ba146016525489b4278055a87d0a
        }
     }
   return (
