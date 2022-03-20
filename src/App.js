@@ -25,7 +25,7 @@ function App() {
   const [ isVerified, setIsVerified ] = useState(false);
   const [isAuthenticated,setIsAuthenticated] = useState(false);
 
-  // For listing users to dashboard for admin
+  // For listing users to users page for admin
   const [usersList,setUsersList] = useState([]);
 
   // Message for login page
