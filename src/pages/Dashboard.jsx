@@ -11,7 +11,7 @@ const Dashboard = () => {
   const verifyUser = async (id,verify) => {
     const checkUser = !verify;
     try {
-      const data = await axios.patch(`${baseUrl}user`,{ id, checkUser });
+      const data = await axios.patch(`${baseUrl()}user`,{ id, checkUser });
       console.log(data);
     }
     catch(err) {
