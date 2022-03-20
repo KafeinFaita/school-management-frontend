@@ -18,6 +18,12 @@ const Sidebar = () => {
             </Link>
           </li>
           <li className="flex items-center justify-end">
+            <Link to='/users' className="sidebar-hover">
+              <MdOutlineDashboardCustomize className="mr-5" />
+              Users
+            </Link>
+          </li>
+          <li className="flex items-center justify-end">
             <Link to='/enrollment' className="sidebar-hover">
               <AiOutlineIdcard className="mr-5" />
               Enrollment

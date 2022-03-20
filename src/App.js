@@ -8,6 +8,7 @@ import Signup from './pages/auth/Signup';
 import Login from './pages/auth/Login';
 
 import Dashboard from './pages/Dashboard';
+import Users from './pages/Users';
 import NotFound from './pages/NotFound';
 import Reports from './pages/Reports';
 import Profile from './pages/Profile';
@@ -43,6 +44,7 @@ function App() {
         
         <Route element={ <DashboardLayout /> }>
           <Route path='/dashboard' element={ <Dashboard /> } />
+          <Route path='/users' element={<Users />} />
           <Route path='/reports' element={ <Reports /> } />
           <Route path='/profile' element={ <Profile /> } />
           <Route path='/students' element={ <Students /> } />
