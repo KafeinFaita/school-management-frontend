@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const StudentTable = ({ students }) => {
-
+    console.log(students);
   return (
     <>
         <table className="w-full mt-4">
@@ -15,10 +15,10 @@ const StudentTable = ({ students }) => {
                 </tr>
                 { students && students.map((student,key) => (
                     <tr className="h-10 odd:bg-gray-100 odd:text-gray-800" key={key}>
-                        <td>{ student.firstName }</td>
-                        <td>{ student.lastName }</td>
+                        <td>{ student.firstname }</td>
+                        <td>{ student.lastname }</td>
                         <td>{ student.middleName }</td>
-                        <td>{ student.Address }</td>
+                        <td>{ student.address }</td>
                         <td onClick={() => console.log('view id')} className="text-center"><button>View Details</button></td>
                     </tr>
                 )) }
