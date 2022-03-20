@@ -11,15 +11,8 @@ const UserModal = ({setApprove,userDetail}) => {
         setIsLoading(!isLoading);
         try {
             const data = await axios.patch(`${baseUrl()}users/${id}`,{ id, checkUser });
-<<<<<<< HEAD
-            console.log(data);
-          }
-          catch(err) {
-            console.log(err);
-=======
             setIsLoading(!isLoading);
             setApprove(false);
->>>>>>> 030552c4e36851e06936d522939a13d2d0f0603f
           }
         catch(err) {
           console.log(err);
