@@ -19,7 +19,7 @@ const Navbar = () => {
         console.log(data);
         localStorage.removeItem('username');
         localStorage.removeItem('role');
-        navigate(`${baseUrl()}login`)
+        navigate(`/login`)
       }
       catch(err) {
         console.log(err);
