@@ -23,7 +23,7 @@ const Students = () => {
     }
     fetchStudents();
     return () => abortCont.abort();
-  },[students])
+  },[])
 
   const [currentPage,setCurrentPage] = useState(1);
   const [studentsPerPage] = useState(10);
