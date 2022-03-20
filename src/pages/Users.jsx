@@ -1,31 +1,24 @@
 import Datetime from "../components/Datetime"
 import { useContext,useState } from 'react';
 import { GlobalContext } from "../helper/Context";
-import { baseUrl } from "../helper/function";
-import axios from "axios";
+import { AiOutlineCheckCircle,AiOutlineCloseSquare } from 'react-icons/ai';
+import UserModal from "../components/users/UserModal";
 
 const Users = () => {
 
     const { usersList } = useContext(GlobalContext);
     const [approve,setApprove] = useState(false);
-  
-    const verifyUser = async (id,verify) => {
-      const checkUser = !verify;
-      try {
-        const data = await axios.patch(`${baseUrl}user`,{ id, checkUser });
-        console.log(data);
-      }
-      catch(err) {
-        console.log(err);
-      }
-    } 
+    // For the user modal
+    const [userDetail,setUserDetail] = useState({});
 
     const validateUserApproval = (id) => {
-      console.log(id);
+      setApprove(!approve);
+      const selectUser = usersList.filter(user => id === user._id);
+      setUserDetail(selectUser[0]);
     }
 
   return (
-    <div className="h-full px-10">
+    <div className="h-full px-10 relative">
       <Datetime title='Users' />
       <div className="py-10">
         <table className="w-full text-left">
@@ -33,24 +26,24 @@ const Users = () => {
             <tr>
               <th>Role</th>
               <th>Username</th>
-              <th>Verified</th>
+              <th>Is Verified</th>
             </tr>
            
             { usersList && usersList.map((user) => (
               <tr key={user._id}>
                 <td>{ user.role }</td>
                 <td>{ user.username }</td>
-                <td className="flex gap-2 items-center h-14">
-                  <input checked={user.isVerified} onChange={(e) => setApprove(e.target.checked)} type="checkbox" />
-                  { approve && <button className="bg-green-500 text-gray-100 p-2 rounded" onClick={() => verifyUser(user._id)}>Verify User</button> }
+                <td className="flex gap-2 items-center h-12">
+                  { user.isVerified ? <AiOutlineCheckCircle onClick={() => validateUserApproval(user._id)} className="text-green-500 cursor-pointer text-xl"/> : 
+                  <AiOutlineCloseSquare onClick={() => validateUserApproval(user._id)} className="text-red-500 cursor-pointer text-xl" /> }
                 </td>
               </tr>
-              
             )) }
-            
+           
           </tbody>
         </table>
       </div>
+      { approve && <UserModal setApprove={setApprove} userDetail={userDetail} /> }
     </div>
   )
 }
