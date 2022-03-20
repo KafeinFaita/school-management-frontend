@@ -2,7 +2,7 @@ import Datetime from "../components/Datetime"
 import StudentTable from "../components/students/StudentTable";
 
 import { useState,useEffect } from 'react';
-import { fetchData } from "../helper/function";
+import axios from 'axios';
 import { baseUrl } from "../helper/function";
 
 const Students = () => {
@@ -12,7 +12,16 @@ const Students = () => {
   
   useEffect(() => {
     const abortCont = new AbortController();
-    fetchData({signal:abortCont.signal},`${baseUrl()}students`,)
+    const fetchStudents = async () => {
+        try {
+            const data = await axios.get(`${baseUrl()}students`, { signal:abortCont.signal }); 
+            setStudents(data.data);
+        }
+        catch(err) {
+            console.log(err)
+        }
+    }
+    fetchStudents();
     return () => abortCont.abort();
   },[students])
 

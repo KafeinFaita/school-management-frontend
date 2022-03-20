@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 const StudentTable = ({ students }) => {
-    console.log(students);
   return (
     <>
         <table className="w-full mt-4">
