@@ -2,139 +2,19 @@ import Datetime from "../components/Datetime"
 import StudentTable from "../components/students/StudentTable";
 
 import { useState,useEffect } from 'react';
-
+import { fetchData } from "../helper/function";
+import { baseUrl } from "../helper/function";
 
 const Students = () => {
 
   const [search,setSearch] = useState('');
-
-  const students = [
-      {
-          firstName: "Paul",
-          lastName:"Andres",
-          middleName:"de Ocampo",
-          Address: "Tanza, Cavite"
-      },
-      {
-        firstName: "Paul",
-        lastName:"Andres",
-        middleName:"de Ocampo",
-        Address: "Tanza, Cavite"
-    },
-    {
-        firstName: "Paul",
-        lastName:"Andres",
-        middleName:"de Ocampo",
-        Address: "Tanza, Cavite"
-    },
-    {
-        firstName: "Paul",
-        lastName:"Andres",
-        middleName:"de Ocampo",
-        Address: "Tanza, Cavite"
-    },
-    {
-        firstName: "Paul",
-        lastName:"Andres",
-        middleName:"de Ocampo",
-        Address: "Tanza, Cavite"
-    },
-    {
-        firstName: "Paul",
-        lastName:"Andres",
-        middleName:"de Ocampo",
-        Address: "Tanza, Cavite"
-    },
-    {
-        firstName: "Paul",
-        lastName:"Andres",
-        middleName:"de Ocampo",
-        Address: "Tanza, Cavite"
-    },
-    {
-        firstName: "Paul",
-        lastName:"Andres",
-        middleName:"de Ocampo",
-        Address: "Tanza, Cavite"
-    },
-    {
-        firstName: "Paul",
-        lastName:"Andres",
-        middleName:"de Ocampo",
-        Address: "Tanza, Cavite"
-    },
-    {
-        firstName: "Paul",
-        lastName:"Andres",
-        middleName:"de Ocampo",
-        Address: "Tanza, Cavite"
-    },
-    {
-        firstName: "Paul",
-        lastName:"Andres",
-        middleName:"de Ocampo",
-        Address: "Tanza, Cavite"
-    },
-    {
-        firstName: "Paul",
-        lastName:"Andres",
-        middleName:"de Ocampo",
-        Address: "Tanza, Cavite"
-    },
-    {
-        firstName: "Paul",
-        lastName:"Andres",
-        middleName:"de Ocampo",
-        Address: "Tanza, Cavite"
-    },
-    {
-        firstName: "Paul",
-        lastName:"Andres",
-        middleName:"de Ocampo",
-        Address: "Tanza, Cavite"
-    },
-    {
-        firstName: "Paul",
-        lastName:"Andres",
-        middleName:"de Ocampo",
-        Address: "Tanza, Cavite"
-    },
-    {
-        firstName: "Paul",
-        lastName:"Andres",
-        middleName:"de Ocampo",
-        Address: "Tanza, Cavite"
-    },
-    {
-        firstName: "Paul",
-        lastName:"Andres",
-        middleName:"de Ocampo",
-        Address: "Tanza, Cavite"
-    },
-    {
-        firstName: "Paul",
-        lastName:"Andres",
-        middleName:"de Ocampo",
-        Address: "Tanza, Cavite"
-    },
-    {
-        firstName: "Paul",
-        lastName:"Andres",
-        middleName:"de Ocampo",
-        Address: "Tanza, Cavite"
-    }, {
-        firstName: "Paul",
-        lastName:"Andres",
-        middleName:"de Ocampo",
-        Address: "Tanza, Cavite"
-    },
-    {
-        firstName: "Paul",
-        lastName:"Andres",
-        middleName:"de Ocampo",
-        Address: "Tanza, Cavite"
-    }
-  ]
+  const [students,setStudents] = useState([]);
+  
+  useEffect(() => {
+    const abortCont = new AbortController();
+    fetchData({signal:abortCont.signal},`${baseUrl()}students`,)
+    return () => abortCont.abort();
+  },[students])
 
   const [currentPage,setCurrentPage] = useState(1);
   const [studentsPerPage] = useState(10);
