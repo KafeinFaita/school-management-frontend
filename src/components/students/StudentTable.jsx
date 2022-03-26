@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
+import { baseUrl } from '../../helper/function';
 
 const StudentTable = ({ students }) => {
+
+  const viewStudentDetail = (id) => {
+    console.log(baseUrl()+'students/'+id);
+  }
+    
   return (
     <>
         <table className="w-full mt-4">
@@ -18,7 +24,7 @@ const StudentTable = ({ students }) => {
                         <td>{ student.lastname }</td>
                         <td>{ student.middleName }</td>
                         <td>{ student.address }</td>
-                        <td onClick={() => console.log('view id')} className="text-center"><button>View Details</button></td>
+                        <td onClick={() => viewStudentDetail(student._id)} className="text-center"><button>View Details</button></td>
                     </tr>
                 )) }
             </tbody>

@@ -36,7 +36,7 @@ function App() {
   const [user, setUser] = useState(localStorage.getItem('username'))
 
   return (
-    <GlobalContext.Provider value={{ mssg,setMssg, user, setUser, role, setRole, usersList,setUsersList }}>
+    <GlobalContext.Provider value={{ mssg,setMssg, user, setUser, role, setRole, usersList, setUsersList }}>
       <Routes>
         <Route path='/' element={ <Navigate to='/dashboard' /> } />
         <Route path='/signup' element={ <Signup /> } />

@@ -12,7 +12,7 @@ const DashboardLayout = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const { mssg, setMssg,setUsersList } = useContext(GlobalContext);
+  const { mssg, setMssg,setUsersList,usersList } = useContext(GlobalContext);
   const [ isVerified, setIsVerified ] = useState(false);
   const [ isAuth, setIsAuth ] = useState(false);
   const [ errMssg,setErrMssg ] = useState('');
@@ -36,7 +36,7 @@ const DashboardLayout = () => {
 
     waitData()
     
-  }, [location, navigate])  
+  }, [location, navigate, setUsersList, usersList])  
 
   useEffect(() => {
     setMssg(errMssg);
