@@ -22,6 +22,9 @@ import StudentDetail from './components/students/StudentDetail';
 
 function App() {
 
+  // For loading states
+  const [isLoading,setIsLoading] = useState(true);
+
   // For protecting pages and allowing users to view certain page
   const [ isVerified, setIsVerified ] = useState(false);
   const [isAuthenticated,setIsAuthenticated] = useState(false);
@@ -37,7 +40,7 @@ function App() {
   const [user, setUser] = useState(localStorage.getItem('username'))
 
   return (
-    <GlobalContext.Provider value={{ mssg,setMssg, user, setUser, role, setRole, usersList, setUsersList }}>
+    <GlobalContext.Provider value={{ mssg,setMssg, user, setUser, role, setRole, usersList, setUsersList,isLoading,setIsLoading }}>
       <Routes>
         <Route path='/' element={ <Navigate to='/dashboard' /> } />
         <Route path='/signup' element={ <Signup /> } />
@@ -49,7 +52,7 @@ function App() {
           <Route path='/reports' element={ <Reports /> } />
           <Route path='/profile' element={ <Profile /> } />
           <Route path='/students' element={ <Students /> } />
-          <Route path='/student/:id' element={ <StudentDetail /> } />
+          <Route path='/students/:id' element={ <StudentDetail /> } />
           <Route path='/admission' element={ <Admission /> } />
           <Route path='/enrollment' element={ <Enrollment /> } />
           <Route path='/registrar' element={ <Registrar /> } />
