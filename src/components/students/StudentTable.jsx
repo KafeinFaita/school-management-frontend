@@ -24,7 +24,7 @@ const StudentTable = ({ students }) => {
                         <td>{ student.lastname }</td>
                         <td>{ student.middleName }</td>
                         <td>{ student.address }</td>
-                        <td onClick={() => viewStudentDetail(student._id)} className="text-center"><button>View Details</button></td>
+                        <Link to={`/student/${student._id}`} className="text-center">View Details</Link>
                     </tr>
                 )) }
             </tbody>

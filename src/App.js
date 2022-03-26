@@ -18,6 +18,7 @@ import Registrar from './pages/Registrar';
 import Finance from './pages/Finance';
 import SchoolCalendar from './pages/SchoolCalendar';
 import Students from './pages/Students';
+import StudentDetail from './components/students/StudentDetail';
 
 function App() {
 
@@ -48,6 +49,7 @@ function App() {
           <Route path='/reports' element={ <Reports /> } />
           <Route path='/profile' element={ <Profile /> } />
           <Route path='/students' element={ <Students /> } />
+          <Route path='/student/:id' element={ <StudentDetail /> } />
           <Route path='/admission' element={ <Admission /> } />
           <Route path='/enrollment' element={ <Enrollment /> } />
           <Route path='/registrar' element={ <Registrar /> } />
