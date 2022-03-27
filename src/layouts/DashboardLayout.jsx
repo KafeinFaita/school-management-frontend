@@ -16,7 +16,7 @@ const DashboardLayout = () => {
   const [ isVerified, setIsVerified ] = useState(false);
   const [ isAuth, setIsAuth ] = useState(false);
   const [ errMssg,setErrMssg ] = useState('');
-  const [ loc, setLoc ] = useState(location.pathname) 
+  const [ loc, setLoc ] = useState(location.pathname);
 
   useEffect(() => {
     const waitData = async() => {
@@ -31,12 +31,10 @@ const DashboardLayout = () => {
         if (error.response.status === 401 ) return navigate(`/login`)
         if (error.response.status === 403) return navigate(`/profile`)
       }
-                  
     }
-
     waitData()
     
-  }, [location, navigate, setUsersList, usersList])  
+  },[location,navigate,usersList,setUsersList])  
 
   useEffect(() => {
     setMssg(errMssg);
